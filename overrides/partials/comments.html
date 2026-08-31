@@ -1,10 +1,18 @@
 {% if page and page.meta and page.meta.comments is not false %}
   <section class="cugcs-comments" aria-labelledby="cugcs-page-comments-title">
-    <h2 id="cugcs-page-comments-title">页面讨论</h2>
-    <p class="cugcs-comments__intro">
-      发现错误、失效链接或有补充经验？使用 GitHub 公开身份登录后，可以直接在本页讨论。
+    <header class="cugcs-comments__header">
+      <p class="cugcs-comments__eyebrow">PAGE NOTES</p>
+      <div class="cugcs-comments__title-row">
+        <h2 id="cugcs-page-comments-title">一起校正文档</h2>
+        <span class="cugcs-comments__count" data-comment-count>正在读取讨论</span>
+      </div>
+      <p class="cugcs-comments__intro">
+        发现错误、失效链接或有补充经验，可以直接留在本页。讨论使用 GitHub 公开身份，内容不会跳转到外部页面。
+      </p>
+    </header>
+    <div class="cugcs-community-app" data-view="page-comments"></div>
+    <p class="cugcs-comments__safety">
       请勿发布个人隐私、课程内部资料或未公开科研材料。
     </p>
-    <div class="cugcs-community-app" data-view="page-comments"></div>
   </section>
 {% endif %}
