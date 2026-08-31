@@ -11,6 +11,7 @@ copyright: Copyright &copy; 2026 CUGCS Wiki Contributors
 
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   font: false
   icon:
@@ -112,6 +113,12 @@ nav:
   - 保研经验:
       - 栏目说明: postgraduate/index.md
       - 经验页面模板: postgraduate/page-template.md
+  - 社区:
+      - 社区首页: community/index.md
+      - 问答广场: community/qa.md
+      - 共建孵化: community/incubator.md
+      - 社区动态: community/activity.md
+      - 社区规则: community/rules.md
   - 参与共建:
       - 贡献指南: contributing/index.md
       - 内容规范: contributing/style-guide.md

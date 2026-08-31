@@ -57,6 +57,53 @@ pre {
   transform: translateY(-2px);
 }
 
+.cugcs-comments {
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.cugcs-comments__intro {
+  margin-top: -0.4rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.85rem;
+}
+
+.cugcs-activity-list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1rem 0 2rem;
+}
+
+.cugcs-activity-item {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.7rem;
+  background: var(--md-default-bg-color);
+}
+
+.cugcs-activity-item p {
+  margin: 0.35rem 0 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.82rem;
+}
+
+.cugcs-status {
+  display: inline-block;
+  margin-right: 0.45rem;
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  background: var(--cugcs-blue-light);
+  color: var(--cugcs-blue);
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+[data-md-color-scheme="slate"] .cugcs-status {
+  background: rgba(33, 150, 243, 0.18);
+  color: #90caf9;
+}
+
 [data-md-color-scheme="slate"] .cugcs-hero {
   border-color: rgba(100, 181, 246, 0.22);
   background:

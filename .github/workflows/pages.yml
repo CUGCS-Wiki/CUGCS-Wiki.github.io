@@ -7,10 +7,22 @@ on:
   pull_request:
     branches:
       - main
+  discussion:
+    types:
+      - created
+      - edited
+      - deleted
+      - transferred
+      - category_changed
+      - answered
+      - unanswered
+  schedule:
+    - cron: "17 */6 * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
+  discussions: read
   pages: write
   id-token: write
 
@@ -38,6 +50,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
+
+      - name: 生成社区动态
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/sync_discussions.py
 
       - name: 构建站点
         run: mkdocs build --strict

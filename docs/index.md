@@ -7,7 +7,7 @@
 CUGCS Wiki 面向中国地质大学（武汉）计算机学习共同体，持续整理课程学习、竞赛资料、科研经验与保研经验。
 
 [开始阅读](courses/index.md){ .md-button .md-button--primary }
-[参与共建](contributing/index.md){ .md-button }
+[进入社区](community/index.md){ .md-button }
 
 </div>
 
@@ -45,6 +45,14 @@ CUGCS Wiki 面向中国地质大学（武汉）计算机学习共同体，持续
 
     [:octicons-arrow-right-24: 进入保研经验](postgraduate/index.md)
 
+-   :material-account-group-outline:{ .lg .middle } **问答与共建**
+
+    ---
+
+    使用 GitHub 账号发起问题、回答同学、评论页面，或把一个值得整理的主题从讨论逐步孵化为 Wiki 内容。
+
+    [:octicons-arrow-right-24: 进入 CUGCS 社区](community/index.md)
+
 </div>
 
 ## 这个 Wiki 想解决什么问题
@@ -54,4 +62,4 @@ CUGCS Wiki 面向中国地质大学（武汉）计算机学习共同体，持续
 本站不是学校官方平台，也不替代教务通知、竞赛章程和招生政策。对于会变化的信息，我们要求标注来源与核验时间；对于个人经验，我们要求说明适用范围，不把个例包装成普遍结论。
 
 !!! info "当前状态"
-    网站骨架已经建立，四个一级模块可以访问。现阶段重点是确定栏目边界、写作模板和贡献流程，正文内容将通过后续提交逐步完善。
+    网站骨架和社区协作流程已经建立。四个内容模块将通过问答、共建提案和拉取请求持续完善；现阶段欢迎补充第一批课程、竞赛、科研与保研内容。
