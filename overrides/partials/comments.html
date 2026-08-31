@@ -1,1 +1,10 @@
-{# 页面评论将由站内社区组件统一渲染，避免发布不可交互的占位区域。 #}
+{% if page and page.meta and page.meta.comments is not false %}
+  <section class="cugcs-comments" aria-labelledby="cugcs-page-comments-title">
+    <h2 id="cugcs-page-comments-title">页面讨论</h2>
+    <p class="cugcs-comments__intro">
+      发现错误、失效链接或有补充经验？使用 GitHub 公开身份登录后，可以直接在本页讨论。
+      请勿发布个人隐私、课程内部资料或未公开科研材料。
+    </p>
+    <div class="cugcs-community-app" data-view="page-comments"></div>
+  </section>
+{% endif %}

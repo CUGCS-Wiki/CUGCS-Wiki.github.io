@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cugcs-wiki-community",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-31",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {
+    "WIKI_ORIGIN": "https://cugcs-wiki.github.io",
+    "ALLOWED_ORIGINS": "https://cugcs-wiki.github.io",
+    "GITHUB_CLIENT_ID": "Ov23ctqEkwVLCNC0m7zQ",
+    "GITHUB_CALLBACK_URL": "https://cugcs-wiki-community.mzh9966.workers.dev/api/v1/auth/github/callback",
+    "SESSION_TTL_SECONDS": "28800",
+    "OAUTH_STATE_TTL_SECONDS": "600",
+    "ADMIN_GITHUB_IDS": "49109638"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cugcs-wiki-community",
+      "database_id": "50027a07-0b03-4806-9cb8-bee09b1eb10d",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

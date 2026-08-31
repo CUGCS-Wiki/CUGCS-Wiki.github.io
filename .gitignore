@@ -1,5 +1,9 @@
 .DS_Store
 .venv/
 site/
+.wrangler/
 __pycache__/
 *.py[cod]
+community-worker/node_modules/
+community-worker/.wrangler/
+community-worker/.dev.vars*
