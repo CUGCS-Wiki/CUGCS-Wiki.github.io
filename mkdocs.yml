@@ -1,0 +1,118 @@
+site_name: CUGCS Wiki
+site_url: https://cugcs-wiki.github.io/
+site_author: CUGCS Wiki Contributors
+site_description: 面向中国地质大学（武汉）计算机学习共同体的课程、竞赛、科研与保研经验 Wiki。
+
+repo_name: CUGCS-Wiki/CUGCS-Wiki.github.io
+repo_url: https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2026 CUGCS Wiki Contributors
+
+theme:
+  name: material
+  language: zh
+  font: false
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - header.autohide
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - search.highlight
+    - search.share
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+
+plugins:
+  - search:
+      lang: zh
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+      locale: zh
+      timezone: Asia/Shanghai
+      type: date
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: 本页目录
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/CUGCS-Wiki
+      name: CUGCS Wiki on GitHub
+
+nav:
+  - 首页: index.md
+  - 课程学习:
+      - 栏目说明: courses/index.md
+      - 课程页面模板: courses/page-template.md
+  - 竞赛资料:
+      - 栏目说明: competitions/index.md
+      - 竞赛页面模板: competitions/page-template.md
+  - 科研经验:
+      - 栏目说明: research/index.md
+      - 科研页面模板: research/page-template.md
+  - 保研经验:
+      - 栏目说明: postgraduate/index.md
+      - 经验页面模板: postgraduate/page-template.md
+  - 参与共建:
+      - 贡献指南: contributing/index.md
+      - 内容规范: contributing/style-guide.md
+  - 关于本站: about.md

@@ -1,0 +1,79 @@
+:root {
+  --cugcs-blue: #0b57a4;
+  --cugcs-blue-light: #eaf3ff;
+  --cugcs-ink: #14213d;
+}
+
+body,
+input {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+    "Microsoft YaHei", sans-serif;
+}
+
+code,
+kbd,
+pre {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.cugcs-hero {
+  margin: 0 0 2rem;
+  padding: 2.4rem 2rem;
+  border: 1px solid rgba(11, 87, 164, 0.16);
+  border-radius: 1rem;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(21, 112, 239, 0.16), transparent 34%),
+    linear-gradient(135deg, #f8fbff 0%, var(--cugcs-blue-light) 100%);
+}
+
+.cugcs-hero h1 {
+  margin-bottom: 0.2rem;
+  color: var(--cugcs-ink);
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.cugcs-hero h3 {
+  margin: 0.3rem 0 1rem;
+  color: var(--cugcs-blue);
+  font-weight: 600;
+}
+
+.cugcs-hero p {
+  max-width: 46rem;
+  font-size: 1.05rem;
+}
+
+.md-typeset .grid.cards > ul > li {
+  border-color: rgba(11, 87, 164, 0.15);
+  border-radius: 0.8rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: rgba(11, 87, 164, 0.45);
+  box-shadow: 0 0.65rem 1.5rem rgba(20, 33, 61, 0.08);
+  transform: translateY(-2px);
+}
+
+[data-md-color-scheme="slate"] .cugcs-hero {
+  border-color: rgba(100, 181, 246, 0.22);
+  background:
+    radial-gradient(circle at 90% 10%, rgba(33, 150, 243, 0.2), transparent 34%),
+    linear-gradient(135deg, #172235 0%, #132d4c 100%);
+}
+
+[data-md-color-scheme="slate"] .cugcs-hero h1 {
+  color: #f2f7ff;
+}
+
+[data-md-color-scheme="slate"] .cugcs-hero h3 {
+  color: #90caf9;
+}
+
+@media screen and (max-width: 44.9375em) {
+  .cugcs-hero {
+    padding: 1.6rem 1.2rem;
+  }
+}
