@@ -6,9 +6,6 @@ comments: false
 
 这里汇总最近更新的问答和共建提案。数据来自本仓库的 GitHub Discussions，在网站构建时更新。最后生成时间：2026-09-01 02:24。
 
-[发起一个问题](https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io/discussions/new?category=q-a){ .md-button .md-button--primary }
-[发起共建提案](https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io/discussions/new?category=ideas){ .md-button }
-
 ## 待回答问题
 
 目前还没有问题。你可以成为第一个提问的人。

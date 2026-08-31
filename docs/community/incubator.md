@@ -2,8 +2,7 @@
 
 共建孵化用于处理“现在还没有完整答案，但值得大家共同整理”的主题。它不是许愿池：每个提案都需要说明为什么值得做、需要哪些证据、谁愿意推进，以及什么状态才算完成。
 
-[发起共建提案](https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io/discussions/new?category=ideas){ .md-button .md-button--primary }
-[查看全部提案](https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io/discussions/categories/ideas){ .md-button }
+<div id="cugcs-proposal-app" class="cugcs-community-app" data-view="proposals"></div>
 
 ## 从想法到 Wiki
 

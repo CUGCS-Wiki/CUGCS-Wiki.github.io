@@ -8,7 +8,7 @@ CUGCS Wiki 是一个面向中国地质大学（武汉）计算机学习共同体
 
 本站使用 MkDocs 与 Material for MkDocs 构建，参考 `csdiy.wiki` 和 OI-Wiki 的知识组织方式，但不复制其品牌、正文、图片或定制代码。Markdown 源文件位于 `docs/`，导航统一维护在 `mkdocs.yml`，推送到 `main` 分支后由 GitHub Actions 自动发布到 GitHub Pages。
 
-社区问答和共建提案使用 GitHub Discussions，页面评论使用 Giscus。`scripts/sync_discussions.py` 会在 GitHub Actions 构建时读取最近讨论，生成静态的社区动态页面；访问令牌不会进入浏览器端产物。
+社区数据暂存于 GitHub Discussions，站内应用负责问答、共建与页面评论的展示和操作。`scripts/sync_discussions.py` 会在 GitHub Actions 构建时读取最近讨论，生成静态的社区动态页面；访问令牌不会进入浏览器端产物。
 
 ## 本地预览
 

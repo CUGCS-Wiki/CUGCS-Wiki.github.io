@@ -124,9 +124,6 @@ comments: false
 
 这里汇总最近更新的问答和共建提案。数据来自本仓库的 GitHub Discussions，在网站构建时更新。最后生成时间：{generated}。
 
-[发起一个问题](https://github.com/{OWNER}/{REPOSITORY}/discussions/new?category=q-a){{ .md-button .md-button--primary }}
-[发起共建提案](https://github.com/{OWNER}/{REPOSITORY}/discussions/new?category=ideas){{ .md-button }}
-
 ## 待回答问题
 
 {activity_block(unanswered, "question")}

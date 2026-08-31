@@ -2,8 +2,7 @@
 
 问答广场用于解决一个可以被明确回答的问题。问题可以来自课程学习、竞赛训练、科研入门、保研准备或其他计算机学习经历。
 
-[立即发起提问](https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io/discussions/new?category=q-a){ .md-button .md-button--primary }
-[查看全部问答](https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io/discussions/categories/q-a){ .md-button }
+<div id="cugcs-qa-app" class="cugcs-community-app" data-view="questions"></div>
 
 ## 怎样提出一个容易得到回答的问题
 

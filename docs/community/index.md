@@ -2,9 +2,6 @@
 
 CUGCS Wiki 不只是一个只读资料站。这里的社区承担两件事：回答同学们在课程、竞赛、科研和保研中的具体问题；把尚未成形但值得沉淀的经验，逐步孵化成可以长期维护的 Wiki 内容。
 
-[发起一个问题](https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io/discussions/new?category=q-a){ .md-button .md-button--primary }
-[发起共建提案](https://github.com/CUGCS-Wiki/CUGCS-Wiki.github.io/discussions/new?category=ideas){ .md-button }
-
 <div class="grid cards" markdown>
 
 -   :material-forum-outline:{ .lg .middle } **问答广场**
@@ -47,7 +44,7 @@ CUGCS Wiki 不只是一个只读资料站。这里的社区承担两件事：回
 
 ## 使用 GitHub 身份参与
 
-所有内容都可以直接阅读。发帖、回答和评论时需要登录 GitHub，社区不单独保存账号和密码。讨论数据保存在本仓库的 GitHub Discussions 中，Wiki 页面只负责展示入口和页面评论。
+所有内容都可以直接阅读。发帖、回答和评论时使用 GitHub 身份登录，但问答、共建和页面评论都在 CUGCS Wiki 站内完成，社区不单独保存 GitHub 密码。
 
 !!! warning "公开社区的边界"
     请勿发布个人联系方式、成绩单、申请材料原件、群聊截图、课程内部题库、未公开试卷、实验室内部材料、审稿内容或受保密协议约束的信息。需要举例时，请先脱敏并确认拥有公开权限。
