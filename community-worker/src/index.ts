@@ -56,7 +56,7 @@ interface PostRow {
   author_role: AppUser["role"];
 }
 
-type TopicKind = "question" | "proposal" | "page";
+type TopicKind = "question" | "proposal";
 
 const TOPIC_CATEGORIES = new Set([
   "courses",
@@ -214,14 +214,6 @@ async function route(request: Request, env: Env): Promise<Response> {
   const reportMatch = path.match(/^\/api\/v1\/posts\/([0-9a-f-]+)\/report$/i);
   if (request.method === "POST" && reportMatch) {
     return reportPost(request, env, reportMatch[1]);
-  }
-
-  if (request.method === "GET" && path === "/api/v1/page-thread") {
-    return getPageThread(request, env);
-  }
-
-  if (request.method === "POST" && path === "/api/v1/page-thread/posts") {
-    return createPageComment(request, env);
   }
 
   throw new ApiError(404, "not_found", "没有找到这个接口。 ");
@@ -753,74 +745,6 @@ async function reportPost(request: Request, env: Env, postId: string): Promise<R
   return jsonResponse(request, env, { ok: true, data: { reported: true } }, 201);
 }
 
-async function getPageThread(request: Request, env: Env): Promise<Response> {
-  const pageKey = pageKeyFromRequest(request);
-  const topic = await env.DB.prepare(
-    "SELECT id FROM topics WHERE kind = 'page' AND page_key = ? AND deleted_at IS NULL",
-  )
-    .bind(pageKey)
-    .first<{ id: string }>();
-  if (!topic) {
-    return jsonResponse(request, env, {
-      ok: true,
-      data: { page_key: pageKey, topic: null, posts: [] },
-    });
-  }
-  const detail = await loadTopicDetail(env, topic.id);
-  return jsonResponse(request, env, {
-    ok: true,
-    data: { page_key: pageKey, topic: detail?.topic ?? null, posts: detail?.posts ?? [] },
-  });
-}
-
-async function createPageComment(request: Request, env: Env): Promise<Response> {
-  const user = await requireUser(request, env);
-  await rateLimit(request, env, `comment:${user.id}`, 20, 600);
-  const input = await readJson<{ path?: unknown; body?: unknown }>(request);
-  const pageKey = normalizePageKey(requiredText(input.path, "页面路径", 1, 300));
-  const bodyMarkdown = requiredText(input.body, "评论", 2, 6_000);
-  const timestamp = now();
-  const newTopicId = crypto.randomUUID();
-
-  await env.DB.prepare(
-    `INSERT OR IGNORE INTO topics
-      (id, kind, page_key, title, author_id, status, created_at, updated_at, last_activity_at)
-     VALUES (?, 'page', ?, ?, ?, 'open', ?, ?, ?)`,
-  )
-    .bind(
-      newTopicId,
-      pageKey,
-      `页面讨论：${pageKey}`,
-      user.id,
-      timestamp,
-      timestamp,
-      timestamp,
-    )
-    .run();
-
-  const topic = await env.DB.prepare(
-    "SELECT id FROM topics WHERE kind = 'page' AND page_key = ? AND deleted_at IS NULL",
-  )
-    .bind(pageKey)
-    .first<{ id: string }>();
-  if (!topic) {
-    throw new ApiError(500, "page_thread_failed", "无法建立页面讨论。 ");
-  }
-  const postId = crypto.randomUUID();
-  await env.DB.batch([
-    env.DB.prepare(
-      `INSERT INTO posts
-        (id, topic_id, author_id, kind, body_markdown, created_at, updated_at)
-       VALUES (?, ?, ?, 'comment', ?, ?, ?)`,
-    ).bind(postId, topic.id, user.id, bodyMarkdown, timestamp, timestamp),
-    env.DB.prepare(
-      `UPDATE topics SET reply_count = reply_count + 1,
-       updated_at = ?, last_activity_at = ? WHERE id = ?`,
-    ).bind(timestamp, timestamp, topic.id),
-  ]);
-  return jsonResponse(request, env, { ok: true, data: { id: postId } }, 201);
-}
-
 async function loadTopicDetail(
   env: Env,
   id: string,
@@ -919,28 +843,6 @@ function validStatusForKind(kind: TopicKind, status: string): boolean {
   return kind === "question"
     ? new Set(["open", "answered", "closed"]).has(status)
     : PROPOSAL_STATUSES.has(status);
-}
-
-function pageKeyFromRequest(request: Request): string {
-  const value = new URL(request.url).searchParams.get("path");
-  if (!value) {
-    throw new ApiError(400, "missing_page_path", "缺少页面路径。 ");
-  }
-  return normalizePageKey(value);
-}
-
-function normalizePageKey(value: string): string {
-  let decoded: string;
-  try {
-    decoded = decodeURIComponent(value);
-  } catch {
-    throw new ApiError(400, "invalid_page_path", "页面路径格式无效。 ");
-  }
-  const withoutQuery = decoded.split(/[?#]/, 1)[0];
-  if (!withoutQuery.startsWith("/") || withoutQuery.length > 300 || withoutQuery.includes("..")) {
-    throw new ApiError(400, "invalid_page_path", "页面路径格式无效。 ");
-  }
-  return withoutQuery.replace(/\/{2,}/g, "/");
 }
 
 async function readJson<T>(request: Request): Promise<T> {

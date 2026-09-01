@@ -1,0 +1,37 @@
+<div id="__comments_script"></div>
+<script>
+  (() => {
+    const giscus = document.createElement("script")
+    const theme = document.body.dataset.mdColorScheme === "slate" ? "dark" : "light"
+
+    Object.entries({
+      async: true,
+      src: "https://giscus.app/client.js",
+      crossOrigin: "anonymous",
+      "data-repo": "{{ config.extra.giscus.repo }}",
+      "data-repo-id": "{{ config.extra.giscus.repo_id }}",
+      "data-category": "{{ config.extra.giscus.category }}",
+      "data-category-id": "{{ config.extra.giscus.category_id }}",
+      "data-mapping": "specific",
+      "data-term": "{{ pageID }}",
+      "data-strict": "1",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": theme,
+      "data-lang": "zh-CN",
+      "data-loading": "lazy",
+    }).forEach(([key, value]) => giscus.setAttribute(key, value))
+
+    document.getElementById("__comments_script").replaceWith(giscus)
+
+    const syncTheme = () => {
+      const nextTheme = document.body.dataset.mdColorScheme === "slate" ? "dark" : "light"
+      document.querySelector("iframe.giscus-frame")?.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: nextTheme } } },
+        "https://giscus.app",
+      )
+    }
+    document.querySelector("[data-md-component=palette]")?.addEventListener("change", syncTheme)
+  })()
+</script>

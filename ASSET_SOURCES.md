@@ -2,6 +2,7 @@
 
 - `docs/assets/images/cug-seal-white.png`：来自中国地质大学（武汉）官网 `https://www.cug.edu.cn/img/yuan.png`，保持原图不修改。
 - `docs/assets/images/cug-cs-lockup.png`：来自中国地质大学（武汉）计算机学院官网 `https://cs.cug.edu.cn/img/baner2.png`，保持标识组合和比例不修改。
+- `docs/assets/images/cug-cs-emblem.png`：来自中国地质大学（武汉）计算机学院官方院徽发布页 `https://cs.cug.edu.cn/info/1019/6677.htm`，仅将官网 JPEG 无损转换为 PNG，未修改图案、颜色、比例或文字。
 - `docs/assets/images/cugcs-circuit-contours.webp`：为 CUGCS Wiki 定制生成的原创插图，以电路网络和地质等高线表达计算机与地学背景的交叉身份。
 - `docs/assets/icons/*.svg`：来自当前 Material for MkDocs 安装包内置的 Material Design Icons。
 

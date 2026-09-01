@@ -14,7 +14,8 @@ theme:
   custom_dir: overrides
   language: zh
   font: false
-  logo: assets/images/cug-seal-white.png
+  logo: assets/images/cug-cs-emblem.png
+  favicon: assets/images/cug-cs-emblem.png
   icon:
     repo: fontawesome/brands/github
   features:
@@ -57,6 +58,9 @@ plugins:
       locale: zh
       timezone: Asia/Shanghai
       type: date
+  - git-authors:
+      show_contribution: false
+      show_email_address: false
 
 markdown_extensions:
   - abbr
@@ -67,7 +71,7 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
-      title: 本页目录
+      title: 目录
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.details
@@ -96,13 +100,18 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
+  giscus:
+    repo: CUGCS-Wiki/CUGCS-Wiki.github.io
+    repo_id: R_kgDOUJlRoA
+    category: General
+    category_id: DIC_kwDOUJlRoM4DEmP4
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/CUGCS-Wiki
       name: CUGCS Wiki on GitHub
 
 nav:
-  - 首页: index.md
+  - 前言: index.md
   - 课程学习:
       - 栏目说明: courses/index.md
       - 课程页面模板: courses/page-template.md
@@ -116,7 +125,7 @@ nav:
       - 栏目说明: postgraduate/index.md
       - 经验页面模板: postgraduate/page-template.md
   - 社区:
-      - 社区首页: community/index.md
+      - 社区概览: community/index.md
       - 问答广场: community/qa.md
       - 共建孵化: community/incubator.md
       - 社区动态: community/activity.md

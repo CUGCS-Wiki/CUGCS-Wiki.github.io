@@ -751,100 +751,6 @@
     return form;
   }
 
-  async function renderPageComments(root) {
-    clear(root);
-    root.classList.add("cugcs-page-comments-app");
-    root.append(loading("正在加载页面讨论…"));
-    try {
-      const data = await api(`/page-thread?path=${encodeURIComponent(window.location.pathname)}`);
-      const posts = data.posts || [];
-      const countNode = root.closest(".cugcs-comments")?.querySelector("[data-comment-count]");
-      if (countNode) countNode.textContent = `${posts.length} 条讨论`;
-
-      const list = h("div", { class: "cugcs-post-list cugcs-post-list--comments" });
-      if (!posts.length) {
-        list.append(
-          h("div", { class: "cugcs-comments-empty", role: "status" }, [
-            h("strong", { text: "还没有讨论" }),
-            h("p", { text: "如果你发现了问题，第一条留言会成为这篇文档继续变好的起点。" }),
-          ]),
-        );
-      }
-      else {
-        const pseudoTopic = { accepted_post_id: null };
-        posts.forEach((post) => list.append(renderPost(post, pseudoTopic)));
-      }
-
-      const form = h("form", {
-        class: "cugcs-comment-composer",
-        "aria-label": "添加页面评论",
-      });
-      if (!currentUser) {
-        form.append(
-          h("div", { class: "cugcs-comment-composer__login-copy" }, [
-            h("strong", { text: "登录后参与讨论" }),
-            h("span", { text: "只读取公开 GitHub 身份，不单独保存你的 GitHub 密码。" }),
-          ]),
-          button("使用 GitHub 登录", "cugcs-button cugcs-button--primary", login),
-        );
-      } else {
-        const textarea = h("textarea", {
-          rows: "4",
-          minlength: "2",
-          maxlength: "6000",
-          required: true,
-          "aria-label": "评论内容",
-          placeholder: "指出错误、补充公开资料或分享适用边界…",
-        });
-        const status = h("div", { "aria-live": "polite" });
-        form.append(
-          h("div", { class: "cugcs-comment-composer__top" }, [
-            authBar(true),
-            h("span", { text: "支持 Markdown" }),
-          ]),
-          textarea,
-          h("div", { class: "cugcs-comment-composer__bottom" }, [
-            h("span", { text: "Ctrl / ⌘ + Enter 发布" }),
-            button("发布评论", "cugcs-button cugcs-button--primary", null, "submit"),
-          ]),
-          status,
-        );
-        textarea.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
-            event.preventDefault();
-            form.requestSubmit();
-          }
-        });
-        form.addEventListener("submit", async (event) => {
-          event.preventDefault();
-          try {
-            status.replaceChildren(loading("正在发布…"));
-            await api("/page-thread/posts", {
-              method: "POST",
-              body: JSON.stringify({ path: window.location.pathname, body: textarea.value }),
-            });
-            await renderPageComments(root);
-          } catch (error) {
-            status.replaceChildren(errorPanel(error));
-          }
-        });
-      }
-
-      const discussion = h("section", { class: "cugcs-comments__discussion" }, [
-        h("div", { class: "cugcs-comments__list-heading" }, [
-          h("h3", { text: "本页讨论" }),
-          h("span", { text: posts.length ? `${posts.length} 条 · 最新在前` : "等待第一条留言" }),
-        ]),
-        list,
-      ]);
-      root.replaceChildren(form, discussion);
-    } catch (error) {
-      const countNode = root.closest(".cugcs-comments")?.querySelector("[data-comment-count]");
-      if (countNode) countNode.textContent = "讨论加载失败";
-      root.replaceChildren(errorPanel(error, () => renderPageComments(root)));
-    }
-  }
-
   async function renderActivity(root) {
     clear(root);
     root.append(loading("正在汇总社区动态…"));
@@ -891,10 +797,6 @@
       await loadCurrentUser();
     } catch (error) {
       document.querySelectorAll(".cugcs-community-app").forEach((root) => {
-        if (root.dataset.view === "page-comments") {
-          const countNode = root.closest(".cugcs-comments")?.querySelector("[data-comment-count]");
-          if (countNode) countNode.textContent = "讨论加载失败";
-        }
         root.replaceChildren(errorPanel(error));
       });
       return;
@@ -906,7 +808,6 @@
       if (root.dataset.view === "questions") jobs.push(renderCollection(root, "question"));
       else if (root.dataset.view === "proposals") jobs.push(renderCollection(root, "proposal"));
       else if (root.dataset.view === "activity") jobs.push(renderActivity(root));
-      else if (root.dataset.view === "page-comments") jobs.push(renderPageComments(root));
     });
     await Promise.allSettled(jobs);
   }
