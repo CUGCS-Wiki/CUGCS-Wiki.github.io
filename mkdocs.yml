@@ -118,6 +118,7 @@ nav:
   - 竞赛资料:
       - 栏目说明: competitions/index.md
       - 竞赛页面模板: competitions/page-template.md
+      - ACM-ICPC 参赛经验（23级）: competitions/acm-icpc.md
   - 科研经验:
       - 栏目说明: research/index.md
       - 科研页面模板: research/page-template.md
