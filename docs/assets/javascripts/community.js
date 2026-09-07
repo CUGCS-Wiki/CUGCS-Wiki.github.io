@@ -148,6 +148,10 @@
     return h("button", { type, class: className, onClick, text: label });
   }
 
+  function bypassInstantNavigation(event) {
+    event.stopPropagation();
+  }
+
   function avatar(user, size = "normal") {
     const image = h("img", {
       class: `cugcs-community-avatar cugcs-community-avatar--${size}`,
@@ -327,6 +331,8 @@
     const title = h("a", {
       class: "cugcs-topic-card__title",
       href,
+      "data-no-instant": "",
+      onClick: bypassInstantNavigation,
       text: topic.title,
     });
     const author = h("span", { class: "cugcs-topic-card__author" }, [
@@ -515,6 +521,8 @@
       const back = h("a", {
         class: "cugcs-community-back",
         href: window.location.pathname,
+        "data-no-instant": "",
+        onClick: bypassInstantNavigation,
         text: expectedKind === "question" ? "← 返回问答广场" : "← 返回共建孵化",
       });
       const heading = h("header", { class: "cugcs-topic-detail__header" }, [
@@ -580,7 +588,13 @@
       root.append(back, detail, replySection);
     } catch (error) {
       root.replaceChildren(
-        h("a", { class: "cugcs-community-back", href: window.location.pathname, text: "← 返回列表" }),
+        h("a", {
+          class: "cugcs-community-back",
+          href: window.location.pathname,
+          "data-no-instant": "",
+          onClick: bypassInstantNavigation,
+          text: "← 返回列表",
+        }),
         errorPanel(error, () => renderTopicDetail(root, id, expectedKind)),
       );
     }
