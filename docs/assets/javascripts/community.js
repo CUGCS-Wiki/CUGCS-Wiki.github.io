@@ -412,6 +412,8 @@
       "aria-label": "搜索",
     });
     const category = categorySelect("category");
+    category.required = false;
+    category.setAttribute("aria-label", "分类");
     category.insertBefore(h("option", { value: "", text: "全部分类" }), category.firstChild);
     category.value = "";
     const status = h("select", { name: "status", "aria-label": "状态" });

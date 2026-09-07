@@ -1,5 +1,5 @@
 {% if page and page.meta and page.meta.comments is not false and not page.is_homepage %}
-  {% set pageID = page.title | default("404", true) %}
+  {% set pageID = page.url %}
   <div id="__comments" class="giscus" data-no-instant></div>
   {% include "partials/javascripts/comments.html" %}
 {% endif %}
