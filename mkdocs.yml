@@ -92,10 +92,10 @@ markdown_extensions:
       custom_checkbox: true
 
 extra_css:
-  - assets/stylesheets/extra.css
+  - assets/stylesheets/extra.css?v=20260907
 
 extra_javascript:
-  - assets/javascripts/community.js
+  - assets/javascripts/community.js?v=20260907
   - assets/javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
