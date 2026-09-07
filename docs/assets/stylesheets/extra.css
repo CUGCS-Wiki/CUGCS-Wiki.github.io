@@ -1264,6 +1264,7 @@ pre {
 
 [data-md-color-scheme="slate"] .cugcs-community-app {
   --community-border: rgba(100, 181, 246, 0.2);
+  --md-typeset-a-color: #90caf9;
 }
 
 [data-md-color-scheme="slate"] .cugcs-button--secondary:hover,
