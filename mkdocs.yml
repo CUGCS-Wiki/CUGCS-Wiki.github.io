@@ -117,6 +117,7 @@ nav:
       - 课程页面模板: courses/page-template.md
   - 竞赛资料:
       - 栏目说明: competitions/index.md
+      - CCF-CSP 备考指南: competitions/ccf-csp.md
       - 竞赛页面模板: competitions/page-template.md
   - 科研经验:
       - 栏目说明: research/index.md
